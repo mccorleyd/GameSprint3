@@ -7,12 +7,14 @@ import java.util.Scanner;
 public class Game {
 	 private int goalPositionX, goalPositionY, playerPositionX, playerPositionY;
 	 private boolean isRunning;
+	 private UserInput inputStream;
 	 
-	 public Game() {
+	 public Game(UserInput inputStream) {
 		 this.playerPositionX = ThreadLocalRandom.current().nextInt(0, 20);
 		 this.playerPositionY = ThreadLocalRandom.current().nextInt(0, 20);
 		 this.goalPositionX = ThreadLocalRandom.current().nextInt(0, 20);
 		 this.goalPositionY = ThreadLocalRandom.current().nextInt(0, 20);
+		 this.inputStream = inputStream;
 		 this.isRunning = true;
 		 startGame();
 	 }
@@ -44,9 +46,7 @@ public class Game {
 		 System.out.println();
 		 
 		 do {
-			 //UserInput input = new UserInput();
-			 Scanner scan = new Scanner(System.in);
-			 String input = scan.nextLine();
+			 String input = inputStream.readString();
 			 switch(input.toLowerCase()) {
 			 	case "left":
 			 		this.playerPositionX--;
@@ -85,10 +85,4 @@ public class Game {
 			 }
 		 } while (isRunning);
 	 }
-	 
-	 public static void main (String[] args) {
-		 Game game = new Game();
-		 
-	 }
-	 
 }
