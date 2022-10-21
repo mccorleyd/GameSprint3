@@ -27,8 +27,8 @@ public class UserInput {
 		stringinput = scan.nextLine();
 		while (true) {
 
-			if (stringinput.equals("w") || stringinput.equals("a") || stringinput.equals("s")
-					|| stringinput.equals("d")) {
+			if (stringinput.equals("up") || stringinput.equals("down") || stringinput.equals("left")
+					|| stringinput.equals("right") || stringinput.equals("exit")) {
 				return stringinput;
 			} else {
 				System.out.println("Invalid input");
