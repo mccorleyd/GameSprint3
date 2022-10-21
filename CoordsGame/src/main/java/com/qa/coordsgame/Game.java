@@ -53,6 +53,7 @@ public class Game {
 			 		outputNewPlayerPosition();
 			 		if(playerReachedTheGoal()) {
 			 			System.out.println("You reached the goal!");
+			 			isRunning = false;
 			 		}
 			 		break;
 			 	case "right":
@@ -60,6 +61,7 @@ public class Game {
 			 		outputNewPlayerPosition();
 			 		if(playerReachedTheGoal()) {
 			 			System.out.println("You reached the goal!");
+			 			isRunning = false;
 			 		}
 			 		break;
 			 	case "up":
@@ -67,6 +69,7 @@ public class Game {
 			 		outputNewPlayerPosition();
 			 		if(playerReachedTheGoal()) {
 			 			System.out.println("You reached the goal!");
+			 			isRunning = false;
 			 		}
 			 		break;
 			 	case "down":
@@ -74,6 +77,7 @@ public class Game {
 			 		outputNewPlayerPosition();
 			 		if(playerReachedTheGoal()) {
 			 			System.out.println("You reached the goal!");
+			 			isRunning = false;
 			 		}
 			 		break;
 			 	case "exit":
