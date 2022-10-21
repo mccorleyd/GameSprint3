@@ -23,7 +23,6 @@ public class UserInput {
 	}
 
 	public String readString() {
-		System.out.println("Please enter a string:");
 		stringinput = scan.nextLine();
 		while (true) {
 
@@ -37,6 +36,10 @@ public class UserInput {
 
 		}
 
+	}
+	
+	public void closeStream() {
+		scan.close();
 	}
 
 }
