@@ -23,6 +23,8 @@ public class Game {
 		 System.out.println("The goal can be found at position (" +
 		                     this.goalPositionX + ", " 
 				           + this.goalPositionY + ")");
+		 System.out.println("You can move arround by using the commands LEFT, RIGHT, UP, DOWN.");
+		 System.out.println("You can terminate the game by typing EXIT.");
 		 System.out.println();
 		 
 		 do {
@@ -32,9 +34,34 @@ public class Game {
 			 switch(input.toLowerCase()) {
 			 	case "left":
 			 		this.playerPositionX--;
-			 	System.out.println("Your new position is: (" 
+			 		System.out.println("Your new position is: (" 
 			 		            + this.playerPositionX + ", " + 
 			 			          this.playerPositionY + ")");
+			 		break;
+			 	case "right":
+			 		this.playerPositionX++;
+			 		System.out.println("Your new position is: (" 
+			 		            + this.playerPositionX + ", " + 
+			 			          this.playerPositionY + ")");
+			 		break;
+			 	case "up":
+			 		this.playerPositionY++;
+			 		System.out.println("Your new position is: (" 
+			 		            + this.playerPositionX + ", " + 
+			 			          this.playerPositionY + ")");
+			 		break;
+			 	case "down":
+			 		this.playerPositionY--;
+			 		System.out.println("Your new position is: (" 
+			 		            + this.playerPositionX + ", " + 
+			 			          this.playerPositionY + ")");
+			 		break;
+			 	case "exit":
+			 		this.isRunning = false;
+			 		break;
+			 	default:
+					System.out.println("Invalid command.");
+					break;
 			 }
 		 } while (isRunning);
 	 }
