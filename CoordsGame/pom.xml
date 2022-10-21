@@ -4,4 +4,13 @@
   <artifactId>coordsgame</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>CoordsGame</name>
+  
+  <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.release>11</maven.compiler.release>
+        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+    </properties>
+  
 </project>
