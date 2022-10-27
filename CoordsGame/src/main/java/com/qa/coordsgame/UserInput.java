@@ -41,5 +41,5 @@ public class UserInput {
 	public void closeStream() {
 		scan.close();
 	}
-
+ 
 }
