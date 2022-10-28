@@ -1,18 +1,31 @@
 package com.qa.coordsgame;
 
-public class GameEntity {
+import java.util.concurrent.ThreadLocalRandom;
+
+public abstract class GameEntity {
 	private int positionX, positionY;
 
-	public GameEntity(int positionX, int positionY) {
+	public GameEntity() {
 		super();
-		this.positionX = positionX;
-		this.positionY = positionY;
+		this.positionX = ThreadLocalRandom.current().nextInt(0, 20);
+		this.positionY = ThreadLocalRandom.current().nextInt(0, 20);
 	}
 	
-	public int getPosition() {
+	public int[] getPosition() {
+		int[] position = new int[2];
+		position[0] = this.positionX;
+		position[1] = this.positionY;
 		// Array for X and Y position.
-		return 0;
+		return position;
 	}
 	
+	public void output(String sound) {
+		System.out.println(sound);
+	}
+	
+	public void updatePosition(int[] newPosition) {
+		this.positionX = newPosition[0];
+		this.positionY = newPosition[1];
+	}
 	
 }
