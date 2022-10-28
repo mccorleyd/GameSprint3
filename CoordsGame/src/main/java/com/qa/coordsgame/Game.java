@@ -1,5 +1,6 @@
 package com.qa.coordsgame;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.Scanner;
@@ -7,15 +8,21 @@ import java.util.Scanner;
 public class Game {
 	 private int playerPositionX, playerPositionY;
 	 private treasure gameTreasure;
-	 private monster gameMonster;
 	 private boolean isRunning;
 	 private UserInput inputStream;
+	 private ArrayList<monster> gameMonsters = new ArrayList<monster> ();
+	 
+	 public void monsterGen(int numberOfMonsters) {
+		 for(int i = 0; i < numberOfMonsters; i++) {
+			 gameMonsters.add(new monster());
+		 }
+	 }
 	 
 	 public Game(UserInput inputStream) {
 		 this.playerPositionX = ThreadLocalRandom.current().nextInt(0, 20);
 		 this.playerPositionY = ThreadLocalRandom.current().nextInt(0, 20);
 		 this.gameTreasure = new treasure();
-		 this.gameMonster = new monster();
+		 monsterGen(3);
 		 this.inputStream = inputStream;
 		 this.isRunning = true;
 		 startGame();
@@ -34,7 +41,7 @@ public class Game {
 	 			isRunning = false;
 	 		}
 		 else if(playerReachedMonster()) {
-			    gameMonster.output(gameMonster.sound);
+			    System.out.println("Roar!"); //Access from object if we have time.
 	 			System.out.println("The Monster has eaten you!");
 	 			isRunning = false;
 	 		}
@@ -52,17 +59,20 @@ public class Game {
 	 
 	 
 	 public boolean playerReachedMonster() {
-		 int[] monsterPosition = gameMonster.getPosition();
-		 if (this.playerPositionX == monsterPosition[0] && 
-		     this.playerPositionY == monsterPosition[1]) {
-			 return true;
+		 for (monster monsters: gameMonsters) {
+			 int[] monsterPosition = monsters.getPosition();
+			 if (this.playerPositionX == monsterPosition[0] && 
+			     this.playerPositionY == monsterPosition[1]) {
+				 return true;
+			 }
+			 
 		 }
+
 		 return false;
 	 }
 	 
 	 public void startGame() {
 		 int[] treasurePosition = gameTreasure.getPosition();
-		 int[] monsterPosition = gameMonster.getPosition();
 		 System.out.println("Welcome to our Coordinate Game!");
 		 System.out.println("Your starting position is (" + 
 		                     this.playerPositionX + ", " + 
@@ -70,9 +80,13 @@ public class Game {
 		 System.out.println("The treasure can be found at position (" +
 		                     treasurePosition[0] + ", " 
 				           + treasurePosition[1] + ")");
-		 System.out.println("Beware the monster is at position (" +
-                 monsterPosition[0] + ", " 
-	           + monsterPosition[1] + ")");
+		 if (!gameMonsters.isEmpty()) {
+			 System.out.println("Beware the monsters are at the following positions:");
+				 for (monster monsters: gameMonsters) {
+					 int[] monsterPosition = monsters.getPosition();
+					 System.out.println("(" + monsterPosition[0] + "," + monsterPosition[1] + ")");
+					 }
+		 }
 		 System.out.println("You can move arround by using the commands LEFT, RIGHT, UP, DOWN.");
 		 System.out.println("You can terminate the game by typing EXIT.");
 		 System.out.println();
