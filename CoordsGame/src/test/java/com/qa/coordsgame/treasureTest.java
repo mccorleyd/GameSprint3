@@ -9,29 +9,29 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class monsterTest {
-	monster mTest;
-	
+class treasureTest {
+	treasure treasureTest;
+
 	@BeforeEach
 	void setUp() throws Exception {
-		mTest = new monster();
+		treasureTest = new treasure();
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 	}
-
+	
 	@Test
 	void testingSound() {
-		String actualSound = mTest.output();
-		Assertions.assertEquals("Roar!",actualSound);
+		String actualSound = treasureTest.output();
+		Assertions.assertEquals(null,actualSound);
 	}
-	
+
 	@Test
 	void testingGetPosition() {
 		int[] testPos = new int[2];
 		boolean flag = false;
-		testPos = mTest.getPosition();
+		testPos = treasureTest.getPosition();
 		if (testPos[0] == 0 && testPos[1] == 0) {
 			flag = false;
 		}
@@ -47,8 +47,8 @@ class monsterTest {
 		exPos[0] = 10;
 		exPos[1] = 10;
 		int[] actPos = new int[2];
-		mTest.updatePosition(exPos);
-		actPos = mTest.getPosition();
+		treasureTest.updatePosition(exPos);
+		actPos = treasureTest.getPosition();
 		Assertions.assertArrayEquals(exPos,actPos);
 		
 	}
