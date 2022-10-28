@@ -50,6 +50,7 @@ public class Game {
 		 return false;
 	 }
 	 
+	 
 	 public boolean playerReachedMonster() {
 		 int[] monsterPosition = gameMonster.getPosition();
 		 if (this.playerPositionX == monsterPosition[0] && 
@@ -80,27 +81,48 @@ public class Game {
 			 String input = inputStream.readString();
 			 switch(input.toLowerCase()) {
 			 	case "left":
-			 		this.playerPositionX--;
-			 		outputNewPlayerPosition();
-			 		checkLocation();
+			 		if(this.playerPositionX-1 < 0) {
+			 			System.out.println("Can't move any further left");
+			 		}
+			 		else {
+				 		this.playerPositionX--;
+				 		outputNewPlayerPosition();
+				 		checkLocation();
+			 		}
 			 		
 			 		break;
 			 	case "right":
-			 		this.playerPositionX++;
-			 		outputNewPlayerPosition();
-			 		checkLocation();
+			 		if(this.playerPositionX+1 > 20) {
+			 			System.out.println("Can't move any further right");
+			 		}
+			 		else {
+				 		this.playerPositionX++;
+				 		outputNewPlayerPosition();
+				 		checkLocation();
+			 		}
 			
 			 		break;
 			 	case "up":
-			 		this.playerPositionY++;
-			 		outputNewPlayerPosition();
-			 		checkLocation();
+			 		if(this.playerPositionY+1 > 20) {
+			 			System.out.println("Can't move up any further!");
+			 			// Create custom message
+			 		}
+			 		else {
+				 		this.playerPositionY++;
+				 		outputNewPlayerPosition();
+				 		checkLocation();
+			 		}
 			 		
 			 		break;
 			 	case "down":
-			 		this.playerPositionY--;
-			 		outputNewPlayerPosition();
-			 		checkLocation();
+			 		if(this.playerPositionY-1 < 0) {
+			 			System.out.println("Can't move down any further!");
+			 		}
+			 		else {
+				 		this.playerPositionY--;
+				 		outputNewPlayerPosition();
+				 		checkLocation();
+			 		}
 			 		
 			 		break;
 			 	case "exit":
