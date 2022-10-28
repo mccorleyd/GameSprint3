@@ -9,4 +9,10 @@ public class monster extends GameEntity{
 		// TODO Auto-generated constructor stub
 	}
 
+
+	public String output() {
+		// TODO Auto-generated method stub
+		return sound;
+	}
+
 }

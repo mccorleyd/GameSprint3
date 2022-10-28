@@ -19,9 +19,8 @@ public abstract class GameEntity {
 		return position;
 	}
 	
-	public void output(String sound) {
-		System.out.println(sound);
-	}
+	public abstract String output();
+	
 	
 	public void updatePosition(int[] newPosition) {
 		this.positionX = newPosition[0];
