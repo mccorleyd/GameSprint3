@@ -27,6 +27,20 @@ public class Game {
 			        + this.playerPositionY + ")");
 	 }
 	 
+	 
+	 public void checkLocation() {
+		 if(playerReachedTheGoal()) {
+	 			System.out.println("You reached the goal!");
+	 			isRunning = false;
+	 		}
+		 else if(playerReachedMonster()) {
+			    gameMonster.output(gameMonster.sound);
+	 			System.out.println("The Monster has eaten you!");
+	 			isRunning = false;
+	 		}
+		 
+	 }
+	 
 	 public boolean playerReachedTheGoal() {
 		 int[] treasurePosition = gameTreasure.getPosition();
 		 if (this.playerPositionX == treasurePosition[0] && 
@@ -36,7 +50,6 @@ public class Game {
 		 return false;
 	 }
 	 
-	 // Add PlayerReachedMonster
 	 public boolean playerReachedMonster() {
 		 int[] monsterPosition = gameMonster.getPosition();
 		 if (this.playerPositionX == monsterPosition[0] && 
@@ -69,34 +82,26 @@ public class Game {
 			 	case "left":
 			 		this.playerPositionX--;
 			 		outputNewPlayerPosition();
-			 		if(playerReachedTheGoal()) {
-			 			System.out.println("You reached the goal!");
-			 			isRunning = false;
-			 		}
+			 		checkLocation();
+			 		
 			 		break;
 			 	case "right":
 			 		this.playerPositionX++;
 			 		outputNewPlayerPosition();
-			 		if(playerReachedTheGoal()) {
-			 			System.out.println("You reached the goal!");
-			 			isRunning = false;
-			 		}
+			 		checkLocation();
+			
 			 		break;
 			 	case "up":
 			 		this.playerPositionY++;
 			 		outputNewPlayerPosition();
-			 		if(playerReachedTheGoal()) {
-			 			System.out.println("You reached the goal!");
-			 			isRunning = false;
-			 		}
+			 		checkLocation();
+			 		
 			 		break;
 			 	case "down":
 			 		this.playerPositionY--;
 			 		outputNewPlayerPosition();
-			 		if(playerReachedTheGoal()) {
-			 			System.out.println("You reached the goal!");
-			 			isRunning = false;
-			 		}
+			 		checkLocation();
+			 		
 			 		break;
 			 	case "exit":
 			 		this.isRunning = false;
