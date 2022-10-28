@@ -5,15 +5,17 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.Scanner;
 
 public class Game {
-	 private int goalPositionX, goalPositionY, playerPositionX, playerPositionY;
+	 private int playerPositionX, playerPositionY;
+	 private treasure gameTreasure;
+	 private monster gameMonster;
 	 private boolean isRunning;
 	 private UserInput inputStream;
 	 
 	 public Game(UserInput inputStream) {
 		 this.playerPositionX = ThreadLocalRandom.current().nextInt(0, 20);
 		 this.playerPositionY = ThreadLocalRandom.current().nextInt(0, 20);
-		 this.goalPositionX = ThreadLocalRandom.current().nextInt(0, 20);
-		 this.goalPositionY = ThreadLocalRandom.current().nextInt(0, 20);
+		 this.gameTreasure = new treasure();
+		 this.gameMonster = new monster();
 		 this.inputStream = inputStream;
 		 this.isRunning = true;
 		 startGame();
@@ -26,21 +28,37 @@ public class Game {
 	 }
 	 
 	 public boolean playerReachedTheGoal() {
-		 if (this.playerPositionX == this.goalPositionX && 
-		     this.playerPositionY == this.goalPositionY) {
+		 int[] treasurePosition = gameTreasure.getPosition();
+		 if (this.playerPositionX == treasurePosition[0] && 
+		     this.playerPositionY == treasurePosition[1]) {
+			 return true;
+		 }
+		 return false;
+	 }
+	 
+	 // Add PlayerReachedMonster
+	 public boolean playerReachedMonster() {
+		 int[] monsterPosition = gameMonster.getPosition();
+		 if (this.playerPositionX == monsterPosition[0] && 
+		     this.playerPositionY == monsterPosition[1]) {
 			 return true;
 		 }
 		 return false;
 	 }
 	 
 	 public void startGame() {
+		 int[] treasurePosition = gameTreasure.getPosition();
+		 int[] monsterPosition = gameMonster.getPosition();
 		 System.out.println("Welcome to our Coordinate Game!");
 		 System.out.println("Your starting position is (" + 
 		                     this.playerPositionX + ", " + 
 				             this.playerPositionY + ")");
-		 System.out.println("The goal can be found at position (" +
-		                     this.goalPositionX + ", " 
-				           + this.goalPositionY + ")");
+		 System.out.println("The treasure can be found at position (" +
+		                     treasurePosition[0] + ", " 
+				           + treasurePosition[1] + ")");
+		 System.out.println("Beware the monster is at position (" +
+                 monsterPosition[0] + ", " 
+	           + monsterPosition[1] + ")");
 		 System.out.println("You can move arround by using the commands LEFT, RIGHT, UP, DOWN.");
 		 System.out.println("You can terminate the game by typing EXIT.");
 		 System.out.println();

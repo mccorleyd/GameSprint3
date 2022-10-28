@@ -23,7 +23,7 @@ public class UserInput {
 	}
 
 	public String readString() {
-		stringinput = scan.nextLine();
+		stringinput = scan.nextLine().toLowerCase();
 		while (true) {
 
 			if (stringinput.equals("up") || stringinput.equals("down") || stringinput.equals("left")

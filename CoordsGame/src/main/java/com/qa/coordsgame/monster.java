@@ -1,7 +1,7 @@
 package com.qa.coordsgame;
 
 public class monster extends GameEntity{
-    private String sound = "Roar!"; 
+    protected String sound = "Roar!"; 
 	
 	
 	public monster() {
